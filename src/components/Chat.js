@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef } from "react";
 
 //Import Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,11 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faSmileBeam } from "@fortawesome/free-regular-svg-icons";
 
-//Import UserChatsMessages
-import userChats from "../UserChats";
-import usersAccounts from "../accounts";
-
-const Chat = ({ currentUser, currentChat, chatRef }) => {
+const Chat = ({ currentUser, currentChat }) => {
   //DOM Refrences
   const fileInputRef = useRef();
   const messageInputRef = useRef();
@@ -25,16 +21,27 @@ const Chat = ({ currentUser, currentChat, chatRef }) => {
   const sendMessage = (e) => {
     const message = messageInputRef.current.value;
     if (e.key === "Enter" && message !== "") {
-      console.log("Enter");
+      console.log("Enter", currentChat.messages);
+      currentChat.messages.push({
+        message: message,
+        date: new Date(),
+      });
     }
   };
 
   return (
-    <div className="chat" ref={chatRef}>
+    <div className="chat">
       <div className="chat-header">
         <div className="connect-info">
-          <h4>{currentUser.name}</h4>
-          <span>last seen {currentUser.lastConnect}</span>
+          <h4>
+            {currentChat.chatName !== undefined ? currentChat.chatName : ""}
+          </h4>
+          <span>
+            last seen
+            {currentChat.user !== undefined
+              ? " " + currentChat.user.lastConnect
+              : " "}
+          </span>
         </div>
         <div className="chat-header-icons">
           <span>

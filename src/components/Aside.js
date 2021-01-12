@@ -12,6 +12,7 @@ const Aside = ({
   currentChat,
   setCurrentChat,
   userChatsList,
+  currentUser,
 }) => {
   return (
     <aside>
@@ -19,10 +20,10 @@ const Aside = ({
       <Contacts
         accounts={accounts}
         chatAlertRef={chatAlertRef}
-        chatRef={chatRef}
         currentChat={currentChat}
         setCurrentChat={setCurrentChat}
         userChatsList={userChatsList}
+        currentUser={currentUser}
       />
     </aside>
   );

@@ -1,25 +1,26 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 const Contact = ({
   account,
-  id,
   chatAlertRef,
-  chatRef,
+  currentUser,
   currentChat,
   setCurrentChat,
   userChatsList,
 }) => {
+  //Function And Handlers
   const openChat = (e) => {
     chatAlertRef.current.classList.add("open-chat");
-
     setCurrentChat(userChatsList.filter((chat) => chat.id === e.target.id)[0]);
   };
 
   return (
-    <div className="contact" id={id} onClick={openChat}>
+    <div className="contact" id={account.id} onClick={openChat}>
       <img src={account.accountPic} alt="" />
       <div>
-        <h4>{account.name}</h4>
+        <h4>
+          {account.name !== currentUser.name ? account.name : "Saved messages"}
+        </h4>
         <p>{account.lastMessage}</p>
       </div>
       <span>{account.lastConnect}</span>

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Aside from "./Aside";
 import ChatSection from "./ChatSection";
 import Nav from "./Nav";

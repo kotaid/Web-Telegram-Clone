@@ -8,6 +8,7 @@ const Contacts = ({
   currentChat,
   setCurrentChat,
   userChatsList,
+  currentUser,
 }) => {
   return (
     <div className="contacts">
@@ -15,7 +16,6 @@ const Contacts = ({
         return (
           <Contact
             account={account}
-            id={account.id}
             key={account.id}
             chatAlertRef={chatAlertRef}
             chatRef={chatRef}
@@ -23,6 +23,7 @@ const Contacts = ({
             setCurrentChat={setCurrentChat}
             accounts={accounts}
             userChatsList={userChatsList}
+            currentUser={currentUser}
           />
         );
       })}

@@ -7,7 +7,7 @@ import userChats from "./UserChats";
 function App() {
   const [accounts, setAccounts] = useState(usersAccounts);
   const [userChatsList, setUserChats] = useState(userChats);
-  console.log(userChatsList);
+
   return (
     <div className="App">
       <Main

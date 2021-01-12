@@ -24,7 +24,7 @@ const Nav = ({ activeNav, currentUser, setCurrentUser }) => {
         </div>
         <div>
           <div>
-            <h3>User Name</h3>
+            <h3>{currentUser.name}</h3>
             <p>User Phone</p>
           </div>
           <FontAwesomeIcon

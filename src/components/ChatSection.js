@@ -1,20 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Chat from "./Chat";
 
-const ChatSection = ({ chatAlertRef, currentUser, currentChat, chatRef }) => {
-  const OpenChat = () => {
-    useEffect(() => {
-      return <Chat currentUser={currentUser} currentChat={currentChat} />;
-    }, [currentChat]);
-
-    return null;
-  };
+const ChatSection = ({ chatAlertRef, currentUser, currentChat }) => {
   return (
     <div className="chat-section">
       <div id="choose-chat" ref={chatAlertRef}>
         Select a chat to start messaging
       </div>
-      <OpenChat />
+      <Chat currentUser={currentUser} currentChat={currentChat} />
     </div>
   );
 };
