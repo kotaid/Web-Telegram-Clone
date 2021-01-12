@@ -1,0 +1,89 @@
+aside {
+  flex: 0 0 350px;
+  background: white;
+  height: 100vh;
+  border: 1px solid rgba(211, 211, 211, 0.342);
+  .aside-header {
+    height: 12.5vh;
+    padding: 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    left: 0;
+    background: white;
+    & > * {
+      margin: 0.7rem;
+    }
+    input {
+      padding: 0.5rem 0.8rem;
+      font-size: 1rem;
+      outline: none;
+      flex: 1;
+      border: 2px solid transparent;
+      border-radius: 6px;
+      background-color: rgba(0, 0, 0, 0.089);
+      transition: all 0.2s ease;
+    }
+    input:focus {
+      border: 2px solid #28a8e9;
+      border-radius: 6px;
+    }
+    #openNavIcon {
+      font-size: 2rem;
+      padding: 0.2rem;
+
+      cursor: pointer;
+    }
+  }
+  .contacts {
+    overflow: auto;
+    max-height: 87.5vh;
+  }
+}
+
+.contact {
+  max-width: 100%;
+  max-height: 12.5vh;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  &:hover {
+    background-color: rgba(211, 211, 211, 0.342);
+  }
+  img {
+    margin-right: 1rem;
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  div {
+    flex: 1;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 60px;
+
+    p {
+      width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: rgba(0, 0, 0, 0.452);
+    }
+  }
+  span {
+    align-self: flex-start;
+    padding-top: 1rem;
+  }
+  span {
+    color: rgba(0, 0, 0, 0.452);
+  }
+  & > * {
+    pointer-events: none;
+  }
+}
