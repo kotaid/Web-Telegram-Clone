@@ -62,6 +62,10 @@ const Nav = ({ activeNav, currentUser, setCurrentUser }) => {
           <span>Night Mode</span>
         </div>
       </div>
+      <footer>
+        <p>Telegram Desktop</p>
+        <p>Version 2.5.9 - About</p>
+      </footer>
     </nav>
   );
 };

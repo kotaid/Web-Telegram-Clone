@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 body {
-  font-family: "Lato", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 .App {
   width: 100%;
@@ -27,3 +27,4 @@ body {
 @import "./styles-components/nav";
 @import "./styles-components/Aside";
 @import "./styles-components/ChatSection";
+@import "./styles-components/Sign";

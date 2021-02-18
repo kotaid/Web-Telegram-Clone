@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import Aside from "./Aside";
 import ChatSection from "./ChatSection";
 import Nav from "./Nav";
@@ -12,7 +12,8 @@ const Main = ({ accounts, setAccounts, userChatsList }) => {
     if (
       (e.target.className === "chat" ||
         (e.target.localName === "main" && activeNav) ||
-        e.target.className === "chat-section") &&
+        e.target.className === "chat-header" ||
+        e.target.className === "messages-box") &&
       activeNav
     ) {
       setActiveNav(!activeNav);
@@ -24,9 +25,23 @@ const Main = ({ accounts, setAccounts, userChatsList }) => {
   const chatRef = useRef();
 
   //State
-  const [currentChat, setCurrentChat] = useState({});
+  const [currentChat, setCurrentChat] = useState();
   const [currentUser, setCurrentUser] = useState(accounts[0]);
-
+  const ChatState = () => {
+    if (!currentChat) {
+      return null;
+    } else if (currentChat) {
+      return (
+        <ChatSection
+          chatAlertRef={chatAlertRef}
+          chatRef={chatRef}
+          currentUser={currentUser}
+          currentChat={currentChat}
+          setCurrentChat={setCurrentChat}
+        />
+      );
+    }
+  };
   return (
     <main onClick={closeNav}>
       <Nav
@@ -44,12 +59,7 @@ const Main = ({ accounts, setAccounts, userChatsList }) => {
         setCurrentChat={setCurrentChat}
         userChatsList={userChatsList}
       />
-      <ChatSection
-        chatAlertRef={chatAlertRef}
-        chatRef={chatRef}
-        currentUser={currentUser}
-        currentChat={currentChat}
-      />
+      <ChatState />
     </main>
   );
 };

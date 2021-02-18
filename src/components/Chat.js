@@ -1,34 +1,52 @@
-import React, { useRef } from "react";
-
-//Import Icons
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSmileBeam } from "@fortawesome/free-regular-svg-icons";
 import {
-  faSearch,
   faColumns,
   faEllipsisV,
-  faPhoneAlt,
-  faPaperclip,
   faMicrophone,
+  faPaperclip,
+  faPhoneAlt,
+  faSearch,
 } from "@fortawesome/free-solid-svg-icons";
-import { faSmileBeam } from "@fortawesome/free-regular-svg-icons";
+//Import Icons
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import moment from "moment";
+import React, { useRef } from "react";
 
-const Chat = ({ currentUser, currentChat }) => {
+const Chat = ({ currentUser, currentChat, setCurrentChat }) => {
   //DOM Refrences
   const fileInputRef = useRef();
   const messageInputRef = useRef();
+  const messagesBoxRef = useRef();
 
   //Funcions And Handles
   const sendMessage = (e) => {
     const message = messageInputRef.current.value;
+
     if (e.key === "Enter" && message !== "") {
-      console.log("Enter", currentChat.messages);
-      currentChat.messages.push({
-        message: message,
-        date: new Date(),
+      setCurrentChat({
+        ...currentChat,
+        messages: [
+          ...currentChat.messages,
+          {
+            message: message,
+            date: moment().hours() + ":" + moment().minutes(),
+          },
+        ],
       });
+
+      console.log("Enter", currentChat.messages);
     }
   };
 
+  //Effect
+  /* const [lastMessage, setLastMessage] = useState();
+  useEffect(() => {
+    if (currentChat.messages !== undefined) {
+      let messageBox = <div>{currentChat.messages.pop().message}</div>;
+      console.log(messageBox);
+    }
+    return null;
+  }, [currentChat.messages]); */
   return (
     <div className="chat">
       <div className="chat-header">
@@ -67,7 +85,7 @@ const Chat = ({ currentUser, currentChat }) => {
           </span>
         </div>
       </div>
-      <div className="messages-box"></div>
+      <div className="messages-box" ref={messagesBoxRef}></div>
       <div className="typing-field">
         <input type="file" ref={fileInputRef} />
         <button>

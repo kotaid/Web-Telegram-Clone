@@ -10,8 +10,8 @@ const Contact = ({
 }) => {
   //Function And Handlers
   const openChat = (e) => {
-    chatAlertRef.current.classList.add("open-chat");
     setCurrentChat(userChatsList.filter((chat) => chat.id === e.target.id)[0]);
+    chatAlertRef.current.classList.add("open-chat");
   };
 
   return (
