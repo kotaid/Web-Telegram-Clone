@@ -1,27 +1,25 @@
 import React, { useRef } from "react";
-//Router
-import { useHistory } from "react-router-dom";
+
 //icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
 const Sign = ({ auth, storage, db }) => {
-  //Router
-  const history = useHistory();
   //References
   const chooseImgInput = useRef(),
-    chooseImgPreview = useRef(),
+    imgPreview = useRef(),
     firstNameRef = useRef(),
     lastNameRef = useRef(),
     emailRef = useRef(),
     passwordRef = useRef();
 
   //Function Handlers
+  //Preview the Image On Sign-up
   const avatarImgPreview = () => {
     if (chooseImgInput.current.files !== undefined) {
       const reader = new FileReader();
       reader.addEventListener("load", () => {
         const img = reader.result;
-        chooseImgPreview.current.innerHTML = `<img src="${img}"/>`;
+        imgPreview.current.innerHTML = `<img src="${img}"/>`;
         return img;
       });
       reader.readAsDataURL(chooseImgInput.current.files[0]);
@@ -41,9 +39,7 @@ const Sign = ({ auth, storage, db }) => {
         console.log(cred);
         const userStorage = storage.child(`${cred.user.uid}`),
           avatarImage = userStorage.child("avatar-img");
-        avatarImage.put(chooseImgInput.current.files[0]).then(() => {
-          history.push("/chat");
-        });
+        avatarImage.put(chooseImgInput.current.files[0]);
       })
       .catch((err) => {
         console.log(err);
@@ -55,7 +51,7 @@ const Sign = ({ auth, storage, db }) => {
         <form action="" id="header">
           <div
             id="choose-img"
-            ref={chooseImgPreview}
+            ref={imgPreview}
             onClick={() => {
               chooseImgInput.current.click();
             }}

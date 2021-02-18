@@ -12,6 +12,7 @@ import "emoji-mart/css/emoji-mart.css";
 
 function App({ firebase }) {
   const [accounts, setAccounts] = useState(usersAccounts);
+  // eslint-disable-next-line no-unused-vars
   const [userChatsList, setUserChats] = useState(userChats);
   const [userLogin, setUserLogin] = useState();
   //Firebase
